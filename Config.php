@@ -49,7 +49,7 @@
                 "user"  => "/user",
                 "user.player" => "/user/player",
                 "user.skin" => "/user/skin",
-                "github"=> ""
+                "github"=> "https://github.com/idawnlight/yoshino"
             ];
 
             return $router[$name];
