@@ -1,0 +1,9 @@
+[
+    {
+        "base" : "/",
+        "rule" : {
+            "GET index.html" : "Home.IndexController:index",
+            "GET " : "Home.IndexController:index"
+        }
+    }
+]

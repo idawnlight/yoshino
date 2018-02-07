@@ -1,0 +1,8 @@
+[   
+    {
+        "base" : "system:",
+        "rule" : {
+            "CLI serve" : "System.CommandLineController:serve"
+        }
+    }  
+]

@@ -1,0 +1,246 @@
+/* 移动适配 */
+@media (max-width: 640px) {
+	.yoshino-headline {
+		display: none;
+	}
+}
+/* 登陆/注册表单 */
+.yoshino-form {
+	padding: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 30px;
+}
+.yoshino-form button {
+	margin-top: 10px;
+}
+/* 用户中心 */
+.hidden {
+  display: none;
+}
+/* 文档最外层 */
+.doc-container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  position: relative;
+}
+@media (min-width: 480px) {
+  .doc-container {
+    padding-top: 30px;
+    padding-bottom: 70px;
+  }
+}
+@media (min-width: 840px) {
+  .doc-container {
+    padding-top: 40px;
+    padding-bottom: 100px;
+  }
+}
+/* 页面标题 */
+h1.doc-title {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+}
+@media (min-width: 480px) {
+  h1.doc-title {
+    font-size: 28px;
+    line-height: 36px;
+    margin: 0 0 25px 0;
+  }
+}
+@media (min-width: 840px) {
+  h1.doc-title {
+    font-size: 34px;
+    line-height: 40px;
+    /*margin: 0 400px 30px 0;*/
+  }
+}
+/* 组件介绍 */
+.doc-intro {
+  font-size: 16px;
+  margin-bottom: 0;
+  padding: 0 0 48px 0;
+}
+@media (min-width: 480px) {
+  .doc-intro {
+    padding: 0 0 54px 0;
+  }
+}
+@media (min-width: 840px) {
+  .doc-intro {
+    padding: 0 0 60px 0;
+    margin-right: 400px;
+  }
+}
+.doc-no-cover .doc-intro {
+  margin-right: 0;
+}
+.doc-intro p:last-child {
+  margin-bottom: 0;
+}
+/* 组件介绍中的子模块 */
+.doc-intro-module {
+  font-size: 14px;
+  margin-top: 40px;
+}
+.doc-intro-module h3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+}
+.doc-intro-module p {
+  margin-bottom: 1em;
+}
+/* 目录 */
+.doc-toc {
+  margin: 0;
+  font-size: 16px;
+  position: relative;
+  border-left: 3px solid;
+}
+.doc-toc a {
+  text-decoration: none;
+  color: inherit;
+}
+.doc-toc:before {
+  content: 'Contents';
+  font-size: 15px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #757575;
+}
+.doc-toc ul,
+.doc-toc:before {
+  padding-left: 16px;
+}
+.doc-toc ul {
+  list-style: none;
+  margin: 0;
+}
+.doc-toc ul li {
+  margin: 1em 0;
+}
+.doc-toc ul li:first-child {
+  margin-top: 0;
+}
+.doc-toc ul li:last-child {
+  margin-bottom: 0;
+}
+.doc-toc ul li ul {
+  margin: 1em 0;
+  font-size: 0.83em;
+}
+.doc-toc > ul {
+  margin-top: 1em;
+}
+@media (min-width: 480px) {
+  .doc-toc {
+    font-size: 17px;
+    border-left-width: 4px;
+  }
+  .doc-toc ul,
+  .doc-toc:before {
+    padding-left: 18px;
+  }
+}
+@media (min-width: 840px) {
+  .doc-toc {
+    font-size: 18px;
+    border-left-width: 5px;
+    margin-right: 400px;
+  }
+  .doc-toc ul,
+  .doc-toc:before {
+    padding-left: 20px;
+  }
+}
+.doc-no-cover .doc-toc {
+  margin-right: 0;
+}
+/* 封面图 */
+.doc-cover {
+  display: none;
+}
+@media (min-width: 840px) {
+  .doc-cover {
+    display: block;
+    position: absolute;
+    right: 8px;
+    top: 80px;
+  }
+  .doc-cover img {
+    width: 360px;
+    height: 360px;
+  }
+}
+/* 正文章节 */
+.doc-chapter {
+  margin: 20px 0 0 0;
+  padding: 0 0 80px 0;
+}
+.doc-chapter-title {
+  margin-top: 2em !important;
+  position: relative;
+  padding: 80px 0 0 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+.mdui-theme-layout-dark .doc-chapter-title {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.doc-chapter-title .doc-anchor {
+  position: absolute;
+  top: -40px;
+}
+.doc-chapter-title-first {
+  border-top: none !important;
+  margin-top: 0 !important;
+}
+/* 正文小章节标题 */
+.doc-article-title {
+  position: relative;
+  margin: 84px 0 30px 0 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+.doc-article-title .doc-anchor {
+  position: absolute;
+  top: -100px;
+}
+
+/**
+ * ============================================================
+ * =================================================== 常用工具类
+ */
+/* 小型的圆形 */
+.doc-color-circle {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+/* 添加内边距 */
+.doc-box-padding {
+  padding: 10px 15px;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+
+/**
+ * =========================================================
+ * ======================================== 根据主题设置可见状态
+ */
+/* 亮色主题可见 */
+.doc-visible-light-theme {
+  display: block;
+}
+.mdui-theme-layout-dark .doc-visible-light-theme {
+  display: none;
+}
+.doc-visible-dark-theme {
+  display: none;
+}
+.mdui-theme-layout-dark .doc-visible-dark-theme {
+  display: block;
+}

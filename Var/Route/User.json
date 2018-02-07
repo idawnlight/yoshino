@@ -1,0 +1,16 @@
+[
+  {
+    "base" : "/user",
+    "rule" : {
+      "GET " : "User.UserController:user"
+    }
+  },
+  {
+    "base" : "/user/",
+    "rule" : {
+      "GET " : "User.UserController:user",
+      "GET player" : "User.UserController:player",
+      "POST player" : "User.UserController:addPlayer"
+    }
+  }
+]

@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteRule ^Static/(.*)$ Public/Static/$1 [L]
+RewriteRule ^.*$ Public/index.php [L]
