@@ -15,7 +15,10 @@ $$('.reg-button').on('click', function (e) {
             if (data.status !== "succeed") {
                 mdui.alert(data.result.msg, "注册失败");
             } else if (data.status === "succeed") {
-                mdui.alert("将跳转至用户中心", "注册成功");
+                mdui.snackbar({
+                    message: '注册成功',
+                    position: 'right-bottom'
+                });
                 $$('.reg-button').prop('disabled', true);
                 setTimeout("window.location.href='/user'",1000);
             } else {
@@ -39,7 +42,10 @@ $$('.login-button').on('click', function (e) {
             if (data.status !== "succeed") {
                 mdui.alert(data.result.msg, "登录失败");
             } else if (data.status === "succeed") {
-                mdui.alert("将跳转至用户中心", "登录成功");
+                mdui.snackbar({
+                    message: '登录成功',
+                    position: 'right-bottom'
+                });
                 $$('.login-button').prop('disabled', true);
                 setTimeout("window.location.href='/user'",1000);
             } else {
