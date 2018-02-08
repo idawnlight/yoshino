@@ -7,7 +7,10 @@
   "player-list" : "角色列表",
   "player-list-tip" : "点击角色名以查看预览",
   "skin-preview" : "皮肤预览",
+  "player-preview" : "角色预览",
+  "edit-skin" : "更改皮肤",
   "skin/walk" : "行走",
   "skin/run" : "奔跑",
-  "skin/rotate" : "旋转"
+  "skin/rotate" : "旋转",
+  "skin/del" : "删除"
 }

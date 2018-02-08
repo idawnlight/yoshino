@@ -55,7 +55,7 @@ $$('.login-button').on('click', function (e) {
     });
 });
 
-$$('#add-player').on('click', function (e) {
+$$('span#add-player').on('click', function (e) {
     mdui.prompt('角色名', '添加角色',
         function (value) {
             if (value !== "") {
@@ -118,5 +118,37 @@ $$('span#remove-player').on('click', function (e) {
 });
 
 $$("span#edit-skin").on('click', function (e) {
-    console.log(e.srcElement.getAttribute("data-player"))
+    MSP.changeSkin("/legacy/skin/" + e.srcElement.getAttribute("data-player") + ".png?default");
+    MSP.changeCape("/legacy/cape/" + e.srcElement.getAttribute("data-player") + ".png");
+    $$("#yoshino-skin-preview-del").attr("data-player", e.srcElement.getAttribute("data-player"));
+});
+
+$$("#yoshino-skin-preview-del").on('click', function (e) {
+    if (e.srcElement.parentNode.getAttribute("data-player")) {
+        mdui.confirm('您确定要删除角色 "' + e.srcElement.parentNode.getAttribute("data-player") + '" 吗？这个角色将永远失去！（很长时间！）', "删除角色？", function(){
+            $$.ajax({
+                method: 'POST',
+                url: '',
+                dataType: "json",
+                data: "removePlayer=" + e.srcElement.parentNode.getAttribute("data-player"),
+                success: function (data) {
+                    //console.log(data);
+                    if (data.status !== "succeed") {
+                        mdui.snackbar({
+                            message: '删除失败，' + data.result.msg,
+                            position: 'right-bottom'
+                        });
+                    } else if (data.status === "succeed") {
+                        mdui.snackbar({
+                            message: '删除成功',
+                            position: 'right-bottom'
+                        });
+                        $$('span#edit-skin[data-player="'+e.srcElement.parentNode.getAttribute("data-player")+'"]').addClass("hidden");
+                    } else {
+                        mdui.alert("未知错误");
+                    }
+                }
+            });
+        });
+    }
 });

@@ -21,7 +21,7 @@
     <h1 class="doc-title mdui-text-color-theme">{{{trans "page.skin"}}}</h1>
     <div class="mdui-container">
         <div class="mdui-row">
-            <div class="mdui-col-sm-6">
+            <div class="mdui-col-sm-7">
                 <div class="mdui-card">
                     <div class="mdui-container">
                         <div class="mdui-card-primary">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mdui-col-sm-6">
+            <div class="mdui-col-sm-5">
                 <div class="mdui-card yoshino-skin-preview">
                     <div class="mdui-container">
                         <div class="mdui-card-primary">

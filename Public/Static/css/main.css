@@ -18,9 +18,16 @@
 .hidden {
   display: none;
 }
-.yoshino-skin-preview {
-    min-width: 350px;
-    padding-bottom: 15px;
+@media (min-width: 640px) {
+    .yoshino-skin-preview {
+        min-width: 350px;
+        padding-bottom: 15px;
+    }
+}
+@media (max-width: 639px) {
+    .yoshino-skin-preview {
+        margin-top: 10px;
+    }
 }
 /* 文档最外层 */
 .doc-container {
