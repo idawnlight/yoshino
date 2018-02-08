@@ -25,7 +25,7 @@
         <span class="mdui-list-item mdui-ripple" id="remove-player" data-player="{{.}}">{{.}}</span>
         {{/each}}
         <div class="mdui-divider"></div>
-        <span class="mdui-list-item mdui-ripple" id="add-player" data-id="123" data-player="dawn">{{{trans "user.add-user"}}}</span>
+        <span class="mdui-list-item mdui-ripple" id="add-player">{{{trans "user.add-user"}}}</span>
     </div>
 </div>
 {{{include "_partial/footer"}}}

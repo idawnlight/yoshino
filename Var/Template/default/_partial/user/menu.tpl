@@ -4,6 +4,6 @@
     </li>
     <li class="mdui-divider"></li>
     <li class="mdui-menu-item">
-        <a href="../../../../../Public/index.php" class="mdui-ripple">{{{trans "user.sign-out"}}}</a>
+        <a href="{{{path 'sign-out'}}}" class="mdui-ripple">{{{trans "user.sign-out"}}}</a>
     </li>
 </ul>
