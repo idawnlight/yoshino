@@ -18,6 +18,10 @@
 .hidden {
   display: none;
 }
+.yoshino-skin-preview {
+    min-width: 350px;
+    padding-bottom: 15px;
+}
 /* 文档最外层 */
 .doc-container {
   padding-top: 40px;

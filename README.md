@@ -15,4 +15,10 @@ A lite &amp; fast Minecraft skin server, written in php.
 - [ ] 仪表盘
   - [ ] 总览
   - [ ] 用户管理
-- [ ] API
+- [x] API
+  - [x] CustomSkinAPI Revision 2 `/(.*?).json` `/csl/(.*?).json` `/csl/v2/(.*?).json`]`
+  - [x] CustomSkinAPI Revision 1 `/csl/v1/(.*?).json`
+  - [x] UniSkinMod 1.4+ `/usm/(.*?).json`
+  - [x] Legacy (CustomSkinLoader 13.1- && UniSkinMod 1.2-) `/legacy/skin/(.*?).png` `/legacy/cape/(.*?).png`
+
+  PS：UniSkinMod 1.2 & 1.3 的奇特 API 我实在看不懂，也没法支持

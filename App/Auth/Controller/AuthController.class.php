@@ -7,7 +7,7 @@ use X\Controller;
 class AuthController extends Controller
 {
     public function login($req) {
-        $this->checkLogin();
+        $this->checkLogin($req);
 
         $this->data = [
             "collapse-1" => true,
@@ -40,7 +40,7 @@ class AuthController extends Controller
     }
 
     public function reg($req) {
-        $this->checkLogin();
+        $this->checkLogin($req);
 
         $this->data = [
             "collapse-1" => true,
@@ -92,7 +92,7 @@ class AuthController extends Controller
         exit();
     }
 
-    private function checkLogin() {
+    private function checkLogin($req) {
         $db = $this->model("Auth/AuthModel");
 
         if (!isset($_COOKIE["Yoshino_Token"])) {

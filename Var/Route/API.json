@@ -1,0 +1,35 @@
+[
+  {
+    "base" : "/csl/",
+    "rule" : {
+      "GET v1/{username}.json" : "User.APIController:cslv1",
+      "GET v1/textures/{hash}" : "User.APIController:textures",
+      "GET v2/{username}.json" : "User.APIController:csl",
+      "GET v2/textures/{hash}" : "User.APIController:textures",
+      "GET {username}.json" : "User.APIController:csl",
+      "GET textures/{hash}" : "User.APIController:textures"
+    }
+  },
+  {
+    "base" : "/usm/",
+    "rule" : {
+      "GET {username}.json" : "User.APIController:usm",
+      "GET textures/{hash}" : "User.APIController:textures"
+    }
+  },
+  {
+    "base" : "/legacy/",
+    "rule" : {
+      "GET {username}.png" : "User.APIController:legacySkin",
+      "GET skin/{username}.png" : "User.APIController:legacySkin",
+      "GET cape/{username}.png" : "User.APIController:legacyCape"
+    }
+  },
+  {
+    "base" : "/",
+    "rule" : {
+      "GET {username}.json" : "User.APIController:csl",
+      "GET textures/{hash}" : "User.APIController:textures"
+    }
+  }
+]

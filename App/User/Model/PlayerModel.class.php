@@ -33,4 +33,8 @@ class PlayerModel extends Model
     public function getPlayersById($id) {
         return $this->where("id", $id)->findMany();
     }
+
+    public function getPlayerByName($name) {
+        return $this->where("player", $name)->findOne();
+    }
 }

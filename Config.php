@@ -46,9 +46,11 @@
                 "login" => "/auth/login",
                 "reg"   => "/auth/reg",
                 "sign-out" => "/auth/logout",
+
                 "user"  => "/user",
                 "user.player" => "/user/player",
                 "user.skin" => "/user/skin",
+
                 "github"=> "https://github.com/idawnlight/yoshino"
             ];
 

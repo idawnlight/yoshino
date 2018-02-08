@@ -7,7 +7,7 @@ use X\Controller;
 class UserController extends Controller
 {
     public function user($req) {
-        $this->checkLogin();
+        $this->checkLogin($req);
 
         $token = $_COOKIE["Yoshino_Token"];
         $user = $this->getUserModel()->getUserByToken($token);
@@ -21,7 +21,7 @@ class UserController extends Controller
     }
 
     public function player($req) {
-        $this->checkLogin();
+        $this->checkLogin($req);
 
         $token = $_COOKIE["Yoshino_Token"];
         $user = $this->getUserModel()->getUserByToken($token);
@@ -43,17 +43,24 @@ class UserController extends Controller
     }
 
     public function skin($req) {
-        $this->checkLogin();
+        $this->checkLogin($req);
 
         $token = $_COOKIE["Yoshino_Token"];
         $user = $this->getUserModel()->getUserByToken($token);
+        $players = $this->getPlayerModel()->getPlayersById($user->id);
+
+        $playersList = [];
+        foreach ($players as $player) {
+            $playersList[] = $player->player;
+        }
 
         $this->data = [
             "username" => $user->username,
+            "players" => $playersList,
             "collapse-1" => true,
-            "player" => true
+            "skin" => true
         ];
-        return $this->json(["view" => "skin"], "succeed", 1);
+        return $this->view("User/skin");
     }
 
     public function managePlayer($req) {

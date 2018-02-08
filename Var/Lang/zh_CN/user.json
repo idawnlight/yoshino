@@ -3,5 +3,11 @@
   "refresh" : "重新加载",
   "manage-player" : "角色管理",
   "manage-skin" : "更改皮肤",
-  "add-user" : "添加角色"
+  "add-user" : "添加角色",
+  "player-list" : "角色列表",
+  "player-list-tip" : "点击角色名以查看预览",
+  "skin-preview" : "皮肤预览",
+  "skin/walk" : "行走",
+  "skin/run" : "奔跑",
+  "skin/rotate" : "旋转"
 }

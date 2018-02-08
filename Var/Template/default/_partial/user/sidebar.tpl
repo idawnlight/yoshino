@@ -1,4 +1,3 @@
-<!-- Sidebar -->
 <div class="mdui-drawer" id="yoshino-drawer">
     <ul class="mdui-list" mdui-collapse="{accordion: true}">
         <a href="{{{path 'user'}}}">

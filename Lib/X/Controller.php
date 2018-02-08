@@ -61,7 +61,7 @@
                 $resp .= ");";
             }
 
-            return $this->response($resp, ["content-type"=>"application/json"]);
+            return $this->response($resp, ["content-type"=>"application/json", "Content-Length"=>strlen($resp)]);
 
         }
 

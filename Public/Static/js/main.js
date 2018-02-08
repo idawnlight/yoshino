@@ -116,3 +116,7 @@ $$('span#remove-player').on('click', function (e) {
         });
     });
 });
+
+$$("span#edit-skin").on('click', function (e) {
+    console.log(e.srcElement.getAttribute("data-player"))
+});

@@ -14,7 +14,7 @@
     {
 
         public function index($req){
-            $this->checkLogin();
+            $this->checkLogin($req);
 
             $this->data = [
                 "index" => true
@@ -23,7 +23,7 @@
             return $this->view("Home/index");
         }
 
-        private function checkLogin() {
+        private function checkLogin($req) {
             $db = $this->model("Auth/AuthModel");
 
             if (!isset($_COOKIE["Yoshino_Token"])) {
