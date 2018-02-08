@@ -14,10 +14,10 @@
     {
 
         public function index($req){
-            self::checkLogin();
+            $this->checkLogin();
 
             $this->data = [
-                "version" => "1.0.0"
+                "index" => true
             ];
 
             return $this->view("Home/index");
@@ -27,7 +27,7 @@
             $db = $this->model("Auth/AuthModel");
 
             if (!isset($_COOKIE["Yoshino_Token"])) {
-                $_COOKIE["Yoshino_Token"] = self::genToken();
+                $_COOKIE["Yoshino_Token"] = $this->genToken();
             } else {
                 if ($db->isTokenValid($_COOKIE["Yoshino_Token"])) {
                     setcookie("Yoshino_Token", $_COOKIE["Yoshino_Token"], time()+8640000, "/");
@@ -38,7 +38,7 @@
         }
 
         public function genToken() {
-            $token = self::randString(128);
+            $token = $this->randString(128);
             setcookie("Yoshino_Token", $token, time()+8640000, "/");
             return $token;
         }

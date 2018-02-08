@@ -10,7 +10,8 @@
     "rule" : {
       "GET " : "User.UserController:user",
       "GET player" : "User.UserController:player",
-      "POST player" : "User.UserController:addPlayer"
+      "POST player" : "User.UserController:managePlayer",
+      "GET skin" : "User.UserController:skin"
     }
   }
 ]

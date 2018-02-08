@@ -55,8 +55,4 @@
             return $router[$name];
         });
 
-        $App->container->get("Core.View")->addHelper("data", function ($name){
-            return (isset($GLOBALS["yoshino"][$name])) ? $GLOBALS["yoshino"][$name] : "";
-        });
-
     };

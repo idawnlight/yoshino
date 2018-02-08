@@ -13,7 +13,8 @@ class UserController extends Controller
         $user = $this->getUserModel()->getUserByToken($token);
 
         $this->data = [
-            "username" => $user->username
+            "username" => $user->username,
+            "index" => true
         ];
 
         return $this->view("User/index");
@@ -26,22 +27,36 @@ class UserController extends Controller
         $user = $this->getUserModel()->getUserByToken($token);
         $players = $this->getPlayerModel()->getPlayersById($user->id);
 
-        $list = "";
-        //print_r($players);
+        $playersList = [];
         foreach ($players as $player) {
-            $list .= '<span class="mdui-list-item mdui-ripple" id="remove-player" data-player="' . $player->player . '">' . $player->player . '</span>';
+            $playersList[] = $player->player;
         }
-        //exit;
 
         $this->data = [
             "username" => $user->username,
-            "list" => $list
+            "players" => $playersList,
+            "collapse-1" => true,
+            "player" => true
         ];
 
         return $this->view("User/player");
     }
 
-    public function addPlayer($req) {
+    public function skin($req) {
+        $this->checkLogin();
+
+        $token = $_COOKIE["Yoshino_Token"];
+        $user = $this->getUserModel()->getUserByToken($token);
+
+        $this->data = [
+            "username" => $user->username,
+            "collapse-1" => true,
+            "player" => true
+        ];
+        return $this->json(["view" => "skin"], "succeed", 1);
+    }
+
+    public function managePlayer($req) {
         if ($this->checkLogin(true)) {
             if (isset($req->data->post->player) && $req->data->post->player !== "") {
                 if ($this->getPlayerModel()->addPlayer($req->data->post->player, $this->getUserModel()->getUserByToken($_COOKIE["Yoshino_Token"])->id)) {
@@ -75,7 +90,7 @@ class UserController extends Controller
         $db = $this->model("Auth/AuthModel");
 
         if (!isset($_COOKIE["Yoshino_Token"])) {
-            $_COOKIE["Yoshino_Token"] = self::genToken();
+            $_COOKIE["Yoshino_Token"] = $this->genToken();
             if ($return) return false;
             header("location: /");
             exit();
@@ -84,7 +99,7 @@ class UserController extends Controller
                 setcookie("Yoshino_Token", $_COOKIE["Yoshino_Token"], time()+8640000, "/");
                 if ($return) return true;
             } else {
-                $_COOKIE["Yoshino_Token"] = self::genToken();
+                $_COOKIE["Yoshino_Token"] = $this->genToken();
                 header("location: /");
                 exit();
             }
@@ -92,7 +107,7 @@ class UserController extends Controller
     }
 
     public function genToken() {
-        $token = self::randString(128);
+        $token = $this->randString(128);
         setcookie("Yoshino_Token", $token, time()+8640000, "/");
         return $token;
     }

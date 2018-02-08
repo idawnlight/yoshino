@@ -7,7 +7,12 @@ use X\Controller;
 class AuthController extends Controller
 {
     public function login($req) {
-        self::checkLogin();
+        $this->checkLogin();
+
+        $this->data = [
+            "collapse-1" => true,
+            "login" => true
+        ];
 
         return $this->view("Auth/login");
     }
@@ -19,12 +24,12 @@ class AuthController extends Controller
 
             $token = $_COOKIE["Yoshino_Token"];
 
-            $result = $this->getAuthModel()->loginCheck(self::testInput($req->data->post->identification),
+            $result = $this->getAuthModel()->loginCheck($this->testInput($req->data->post->identification),
                 hash("sha256", $req->data->post->password . "69249f9626a4ce1488b6a6c8fb7919b5"),
                 $token);
 
             if ($result) {
-                $this->model("Auth/AuthModel")->setToken(self::testInput($req->data->post->identification), $token);
+                $this->model("Auth/AuthModel")->setToken($this->testInput($req->data->post->identification), $token);
                 return $this->json(array("retcode" => 200, "msg" => "登录成功"), "succeed", 1);
             } else {
                 return $this->json(array("retcode" => 400, "msg" => "用户名或密码不正确"), "failed", 1);
@@ -35,7 +40,12 @@ class AuthController extends Controller
     }
 
     public function reg($req) {
-        self::checkLogin();
+        $this->checkLogin();
+
+        $this->data = [
+            "collapse-1" => true,
+            "reg" => true
+        ];
 
         return $this->view("Auth/reg");
     }
@@ -44,24 +54,24 @@ class AuthController extends Controller
         if (isset($req->data->post->username) && isset($req->data->post->password) && isset($req->data->post->repeatpwd) && isset($req->data->post->email)) {
             if ($req->data->post->username == "" || $req->data->post->password == "" || $req->data->post->email == "")
                 return $this->json(array("retcode" => 400, "msg" => "所有项目均为必填项"), "failed", 1);
-            if (strlen(self::testInput($req->data->post->username)) > 20)
+            if (strlen($this->testInput($req->data->post->username)) > 20)
                 return $this->json(array("retcode" => 400, "msg" => "用户名最长为 20 个字符"), "failed", 1);
-            if (strlen(self::testInput($req->data->post->username)) < 4)
+            if (strlen($this->testInput($req->data->post->username)) < 4)
                 return $this->json(array("retcode" => 400, "msg" => "用户名最短为 4 个字符"), "failed", 1);
-            if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", self::testInput($req->data->post->email)))
+            if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $this->testInput($req->data->post->email)))
                 return $this->json(array("retcode" => 400, "msg" => "无效的邮箱格式"), "failed", 1);
-            if (strlen(self::testInput($req->data->post->password)) > 30)
+            if (strlen($this->testInput($req->data->post->password)) > 30)
                 return $this->json(array("retcode" => 400, "msg" => "密码最长为 30 个字符"), "failed", 1);
-            if (strlen(self::testInput($req->data->post->password)) < 6)
+            if (strlen($this->testInput($req->data->post->password)) < 6)
                 return $this->json(array("retcode" => 400, "msg" => "密码最短为 6 个字符"), "failed", 1);
             if ($req->data->post->password !== $req->data->post->repeatpwd)
                 return $this->json(array("retcode" => 400, "msg" => "两次输入的密码不一致"), "failed", 1);
 
             $auth = $this->model("Auth/AuthModel");
             $token = $_COOKIE["Yoshino_Token"];
-            $exist = $auth->isUserExist(self::testInput($req->data->post->username), self::testInput($req->data->post->email), $token);
+            $exist = $auth->isUserExist($this->testInput($req->data->post->username), $this->testInput($req->data->post->email), $token);
             if (!$exist) {
-                $auth->addUser(self::testInput($req->data->post->username), hash("sha256", $req->data->post->password . "69249f9626a4ce1488b6a6c8fb7919b5"), self::testInput($req->data->post->email), $token);
+                $auth->addUser($this->testInput($req->data->post->username), hash("sha256", $req->data->post->password . "69249f9626a4ce1488b6a6c8fb7919b5"), $this->testInput($req->data->post->email), $token);
                 return $this->json(array("retcode" => 200, "msg" => "注册成功"), "succeed", 1);
             } else if ($exist === "token") {
                 return $this->json(array("retcode" => 400, "msg" => "疑似注册小号行为，已被拦截。<br>如果你认为存在错误，请联系管理员。"), "failed", 1);
@@ -86,7 +96,7 @@ class AuthController extends Controller
         $db = $this->model("Auth/AuthModel");
 
         if (!isset($_COOKIE["Yoshino_Token"])) {
-            $_COOKIE["Yoshino_Token"] = self::genToken();
+            $_COOKIE["Yoshino_Token"] = $this->genToken();
         } else {
             if ($db->isTokenValid($_COOKIE["Yoshino_Token"])) {
                 setcookie("Yoshino_Token", $_COOKIE["Yoshino_Token"], time()+8640000, "/");
@@ -97,7 +107,7 @@ class AuthController extends Controller
     }
 
     public function genToken() {
-        $token = self::randString(128);
+        $token = $this->randString(128);
         setcookie("Yoshino_Token", $token, time()+8640000, "/");
         return $token;
     }
