@@ -21,8 +21,8 @@
         "Database"=> [
             'connection_string' => 'mysql:host=127.0.0.1;dbname=yoshino;charset=utf8', //DSN
             'driver_options'    => array(\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'), //PDO Option
-            'username'          => 'root', //用户名 username
-            'password'          => '', //密码 password
+            'username'          => 'yoshino', //用户名 username
+            'password'          => 'yoshino', //密码 password
             'logging'           => true, //开启Query日志 Enable Query Log
             'caching'           => true, //开启缓存 Enable Cache
             'caching_auto_clear'=> true //自动清理缓存 Auto Clear Cache
