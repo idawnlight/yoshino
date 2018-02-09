@@ -12,5 +12,11 @@
   "skin/walk" : "行走",
   "skin/run" : "奔跑",
   "skin/rotate" : "旋转",
-  "skin/del" : "删除"
+  "skin/del" : "删除",
+  "skin/upload-new" : "上传新的皮肤",
+  "skin/upload-new-tip" : "在右侧选择一个角色",
+  "skin/upload-model" : "模型：",
+  "skin/upload-file"  : "上传：",
+  "skin/upload-file-select" : "选择一个新皮肤",
+  "skin/upload-submit" : "提交"
 }

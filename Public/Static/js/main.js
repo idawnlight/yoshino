@@ -108,7 +108,7 @@ $$('span#remove-player').on('click', function (e) {
                         message: '删除成功',
                         position: 'right-bottom'
                     });
-                    $$('span#remove-player[data-player="'+e.srcElement.getAttribute("data-player")+'"]').addClass("hidden");
+                    $$('span#remove-player[data-player="'+e.srcElement.getAttribute("data-player")+'"]').addClass("hidden").remove();
                 } else {
                     mdui.alert("未知错误");
                 }
@@ -117,10 +117,16 @@ $$('span#remove-player').on('click', function (e) {
     });
 });
 
-$$("span#edit-skin").on('click', function (e) {
+$$("span#view-skin").on('click', function (e) {
     MSP.changeSkin("/legacy/skin/" + e.srcElement.getAttribute("data-player") + ".png?default");
     MSP.changeCape("/legacy/cape/" + e.srcElement.getAttribute("data-player") + ".png");
     $$("#yoshino-skin-preview-del").attr("data-player", e.srcElement.getAttribute("data-player"));
+    $$('#yoshino-skin-preview-del').prop('disabled', false);
+});
+
+$$("span#edit-skin").on('click', function (e) {
+    var playerName = e.srcElement.getAttribute("data-player");
+    $$("#yoshino-skin-username").replaceWith('<div class="mdui-card-primary-subtitle" id="yoshino-skin-username">' + playerName + '</div>');
 });
 
 $$("#yoshino-skin-preview-del").on('click', function (e) {
@@ -152,3 +158,23 @@ $$("#yoshino-skin-preview-del").on('click', function (e) {
         });
     }
 });
+
+document.getElementById('skin').onchange = function (ev) {
+    var fileValue = new Array();
+    var input = $$("#skin").val();
+    if (input.indexOf("/") === -1) {
+        fileValue = input.split("\\");
+    } else {
+        fileValue = input.split("\\");
+    }
+    var fileName = fileValue.slice(-1)[0];
+    console.log(fileName);
+    console.log(document.getElementById("skin").files[0]);
+    $$("#file-name").replaceWith('<span id="file-name">' + fileName + '</span>');
+
+    var form_data = new FormData();
+    form_data.append("id", "001");
+    form_data.append("name", "test");
+    form_data.append("img", document.getElementById("skin").files[0]);
+    console.log(form_data);
+};

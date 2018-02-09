@@ -31,7 +31,7 @@
                         <div class="mdui-divider"></div>
                         <div class="mdui-list" id="yoshino-player">
                             {{#each players}}
-                            <span class="mdui-list-item mdui-ripple" id="edit-skin" data-player="{{.}}">{{.}}</span>
+                            <span class="mdui-list-item mdui-ripple" id="view-skin" data-player="{{.}}">{{.}}</span>
                             {{/each}}
                             <div class="mdui-divider"></div>
                             <span class="mdui-list-item mdui-ripple" id="add-player">{{{trans "user.add-user"}}}</span>
@@ -45,7 +45,7 @@
                         <div class="mdui-card-primary">
                             <div class="mdui-card-primary-title">
                                 {{{trans "user.player-preview"}}}
-                                <button class="mdui-btn mdui-btn-icon mdui-float-right" id="yoshino-skin-preview-del" mdui-tooltip="{content: '{{{trans 'user.skin/del'}}}'}" data-player=""><i class="mdui-icon material-icons mdui-text-color-red">delete</i></button>
+                                <button class="mdui-btn mdui-btn-icon mdui-float-right" id="yoshino-skin-preview-del" mdui-tooltip="{content: '{{{trans 'user.skin/del'}}}'}" data-player="" disabled><i class="mdui-icon material-icons mdui-text-color-red">delete</i></button>
                                 <button class="mdui-btn mdui-btn-icon mdui-float-right" id="yoshino-skin-preview-rotate" mdui-tooltip="{content: '{{{trans 'user.skin/rotate'}}}'}"><i class="mdui-icon material-icons">repeat</i></button>
                                 <button class="mdui-btn mdui-btn-icon mdui-float-right" id="yoshino-skin-preview-run" mdui-tooltip="{content: '{{{trans 'user.skin/run'}}}'}"><i class="mdui-icon material-icons">directions_run</i></button>
                                 <button class="mdui-btn mdui-btn-icon mdui-float-right" id="yoshino-skin-preview-walk" mdui-tooltip="{content: '{{{trans 'user.skin/walk'}}}'}"><i class="mdui-icon material-icons">directions_walk</i></button>

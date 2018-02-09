@@ -25,9 +25,17 @@
     }
 }
 @media (max-width: 639px) {
-    .yoshino-skin-preview {
+    [class*=mdui-col-sm-] .mdui-card {
         margin-top: 10px;
     }
+}
+.yoshino-upload li {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 10px;
+}
+.yoshino-submit {
+    margin: 5px 0 5px 0;
 }
 /* 文档最外层 */
 .doc-container {
