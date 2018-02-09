@@ -21,7 +21,7 @@
     <h1 class="doc-title mdui-text-color-theme">{{{trans "page.skin"}}}</h1>
     <div class="mdui-container">
         <div class="mdui-row">
-            <div class="mdui-col-sm-7">
+            <div class="mdui-col-sm-12">
                 <div class="mdui-card">
                     <div class="mdui-container">
                         <div class="mdui-card-primary">
@@ -35,24 +35,6 @@
                             {{/each}}
                             <div class="mdui-divider"></div>
                             <a href="{{{path 'user.player'}}}" class="mdui-list-item mdui-ripple">{{{trans "user.manage-player"}}}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col-sm-5">
-                <div class="mdui-card yoshino-skin-preview">
-                    <div class="mdui-container">
-                        <div class="mdui-card-primary">
-                            <div class="mdui-card-primary-title">
-                                {{{trans "user.skin-preview"}}}
-                                <button class="mdui-btn mdui-btn-icon mdui-float-right" id="yoshino-skin-preview-rotate" mdui-tooltip="{content: '{{{trans 'user.skin/rotate'}}}'}"><i class="mdui-icon material-icons">repeat</i></button>
-                                <button class="mdui-btn mdui-btn-icon mdui-float-right" id="yoshino-skin-preview-run" mdui-tooltip="{content: '{{{trans 'user.skin/run'}}}'}"><i class="mdui-icon material-icons">directions_run</i></button>
-                                <button class="mdui-btn mdui-btn-icon mdui-float-right" id="yoshino-skin-preview-walk" mdui-tooltip="{content: '{{{trans 'user.skin/walk'}}}'}"><i class="mdui-icon material-icons">directions_walk</i></button>
-                            </div>
-                        </div>
-                        <div class="mdui-divider"></div>
-                        <div id="skin-preview">
-                            <!-- Container for 3D Preview -->
                         </div>
                     </div>
                 </div>

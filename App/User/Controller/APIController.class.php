@@ -111,7 +111,6 @@ class APIController extends Controller
         if ($cache) {
             if (isset($req->data->server->HTTP_IF_MODIFIED_SINCE) && $modified !== null && $modified !== 0) {
                 if (strtotime($req->data->server->HTTP_IF_MODIFIED_SINCE) > $modified) {
-                    header('HTTP/1.1 304 Not Modified');
                     $this->response("", [], 304);
                     exit;
                 }

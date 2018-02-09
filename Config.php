@@ -33,9 +33,7 @@
                 unset($part);
             }
 
-            $block = explode(".", $name);
-            $part = $block[0];
-            $expression = $block[1];
+            list($part, $expression)  = explode(".", $name);
 
             return $$part->$expression;
         });

@@ -72,8 +72,6 @@
 
             $data = array_merge($this->data, $data);
 
-            $GLOBALS["yoshino"] = $data;
-
             return $render($data);
             
         }
