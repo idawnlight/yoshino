@@ -55,4 +55,7 @@
             return $router[$name];
         });
 
+        $App->boot("\\Yoshino\\Middleware\\CheckLogin");
+        
+
     };
