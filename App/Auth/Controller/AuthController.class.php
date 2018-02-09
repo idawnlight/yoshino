@@ -7,8 +7,6 @@ use X\Controller;
 class AuthController extends Controller
 {
     public function login($req) {
-        $this->checkLogin($req);
-
         $this->data = [
             "collapse-1" => true,
             "login" => true
@@ -40,8 +38,6 @@ class AuthController extends Controller
     }
 
     public function reg($req) {
-        $this->checkLogin($req);
-
         $this->data = [
             "collapse-1" => true,
             "reg" => true
@@ -86,30 +82,8 @@ class AuthController extends Controller
     }
 
     public function logout() {
-        setcookie("Yoshino_Token", $_COOKIE["Yoshino_Token"], -1, "/");
-        $this->genToken();
-        header("location: /");
-        exit();
-    }
-
-    private function checkLogin($req) {
-        $db = $this->model("Auth/AuthModel");
-
-        if (!isset($_COOKIE["Yoshino_Token"])) {
-            $_COOKIE["Yoshino_Token"] = $this->genToken();
-        } else {
-            if ($db->isTokenValid($_COOKIE["Yoshino_Token"])) {
-                setcookie("Yoshino_Token", $_COOKIE["Yoshino_Token"], time()+8640000, "/");
-                header("location: /user");
-                exit();
-            }
-        }
-    }
-
-    public function genToken() {
-        $token = $this->randString(128);
-        setcookie("Yoshino_Token", $token, time()+8640000, "/");
-        return $token;
+        setcookie("Yoshino_Token", null, -1, "/");
+        return $this->response("", ["location" => "/"], 302);
     }
 
     private function testInput($text) {
@@ -118,19 +92,5 @@ class AuthController extends Controller
 
     private function getAuthModel() {
         return $this->model("Auth/AuthModel");
-    }
-
-    public function randString($length, $specialChars = false) {
-        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        if ($specialChars) {
-            $chars .= '!@#$%^&*()';
-        }
-
-        $result = '';
-        $max = strlen($chars) - 1;
-        for ($i = 0; $i < $length; $i++) {
-            $result .= $chars[rand(0, $max)];
-        }
-        return $result;
     }
 }

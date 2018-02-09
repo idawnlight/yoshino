@@ -24,18 +24,19 @@
             $isLogin = $controller->checkLogin($request);
             $isInUser = $controller->ifInUser($request);
 
+            if (!$isLogin) {
+                $_COOKIE["Yoshino_Token"] = $controller->genToken();
+            }
             if($isLogin && $isInUser){
                 return;
             }
             if($isLogin){
                 $this->app->handler->response($controller->getRedirectResponse("/user"));
                 die;
-                return;
             }
             if($isInUser){
                 $this->app->handler->response($controller->getRedirectResponse("/auth/login"));
                 die;
-                return;
             }
 
         }

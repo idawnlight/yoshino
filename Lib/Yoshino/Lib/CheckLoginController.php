@@ -57,7 +57,8 @@
         public function ifInUser($req){
 
             $uri = $req->uri;
-            return (substr($uri, 0, 5) === "/user" || $uri === "/auth/logout");
+
+            return (!($uri === "/" || substr($uri, 0, 5) === "/auth") || ($uri === "/auth/logout"));
 
         }
 
@@ -73,6 +74,33 @@
 
             return $this->response("Redirecting...", ["location" => $uri], 302);
 
+        }
+
+        /**
+         * Generation for token
+         *
+         * @return string $token
+         *
+         */
+        public function genToken() {
+            $token = $this->randString(128);
+            //$this->response("", ["Set-Cookie" => "Yoshino_Token=" . $token]);
+            setcookie("Yoshino_Token", $token, time()+8640000, "/");
+            return $token;
+        }
+
+        public function randString($length, $specialChars = false) {
+            $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            if ($specialChars) {
+                $chars .= '!@#$%^&*()';
+            }
+
+            $result = '';
+            $max = strlen($chars) - 1;
+            for ($i = 0; $i < $length; $i++) {
+                $result .= $chars[rand(0, $max)];
+            }
+            return $result;
         }
 
     }
