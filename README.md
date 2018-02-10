@@ -10,7 +10,7 @@ A lite &amp; fast Minecraft skin server, written in php.
 - [ ] 个人中心
   - [x] 登录 / 注册
   - [x] 管理角色
-  - [ ] 管理皮肤
+  - [x] 管理皮肤
   - [ ] 管理披风（第二个版本计划）
 - [ ] 仪表盘
   - [ ] 总览
