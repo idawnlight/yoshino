@@ -2,7 +2,7 @@
 
 namespace Yoshino\Lib;
 
-class SkinHashController extends \X\Controller
+class SkinController extends \X\Controller
 {
     public function skinHash($tmp_name) {
         $skin = ImageCreateFromPng($tmp_name);
@@ -20,5 +20,15 @@ class SkinHashController extends \X\Controller
             }
         }
         return hash("sha256", $string);
+    }
+
+    public function skinContent($tmp_name) {
+        ob_start();
+        $skin = ImageCreateFromPng($tmp_name);
+        imagesavealpha($skin, true);
+        imagepng($skin);
+        $data = ob_get_contents();
+        ob_end_clean();
+        return $data;
     }
 }

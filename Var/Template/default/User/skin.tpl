@@ -48,7 +48,7 @@
                                     {{{trans "user.skin/upload-model"}}}
                                     <select class="mdui-select" mdui-select name="type">
                                         <option value="default">Steve (default)</option>
-                                        <option value="slim">Alex (Slim)</option>
+                                        <option value="slim">Alex (slim)</option>
                                     </select>
                                 </li>
                                 <li>
@@ -69,4 +69,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('skin').onchange = function (ev) {
+        var fileValue = new Array();
+        var input = $$("#skin").val();
+        if (input.indexOf("/") === -1) {
+            fileValue = input.split("\\");
+        } else {
+            fileValue = input.split("\\");
+        }
+        var fileName = fileValue.slice(-1)[0];
+        //console.log(fileName);
+        //var fileInfo = document.getElementById("skin").files[0];
+        //console.log(fileInfo);
+        $$("#file-name").replaceWith('<span id="file-name">' + fileName + '</span>');
+    };
+</script>
 {{{include "_partial/footer"}}}

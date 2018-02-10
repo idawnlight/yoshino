@@ -14,7 +14,7 @@ class APIController extends Controller
             $profile = [
                 "username" => $player->player,
                 "textures" => [
-                    "default" => (isset($player->skin) && $player->skin !== "") ? $player->skin : null,
+                    "default" => (isset($player->default) && $player->default !== "") ? $player->default : null,
                     "slim" => (isset($player->slim) && $player->slim !== "") ? $player->slim : null,
                     "cape" => (isset($player->cape) && $player->cape !== "") ? $player->cape : null,
                     "elytra" => (isset($player->elytra) && $player->elytra !== "") ? $player->elytra : null
@@ -24,7 +24,7 @@ class APIController extends Controller
                 $profile = [
                     "username" => $player->player,
                     "skins" => [
-                        "default" => (isset($player->skin) && $player->skin !== "") ? $player->skin : null,
+                        "default" => (isset($player->default) && $player->default !== "") ? $player->default : null,
                         "slim" => (isset($player->slim) && $player->slim !== "") ? $player->slim : null
                     ],
                     "cape" => (isset($player->cape) && $player->cape !== "") ? $player->cape : null
@@ -49,13 +49,13 @@ class APIController extends Controller
                 "last_update" => $player->last_modified,
                 "model_preference" => [],
                 "skins" => [
-                    "default" => (isset($player->skin) && $player->skin !== "") ? $player->skin : null,
+                    "default" => (isset($player->default) && $player->default !== "") ? $player->default : null,
                     "slim" => (isset($player->slim) && $player->slim !== "") ? $player->slim : null,
                     "cape" => (isset($player->cape) && $player->cape !== "") ? $player->cape : null
                 ],
                 "cape" => (isset($player->cape) && $player->cape !== "") ? $player->cape : null
             ];
-            if (isset($player->skin) && $player->skin !== "") $profile["model_preference"][] = "default";
+            if (isset($player->default) && $player->default !== "") $profile["model_preference"][] = "default";
             if (isset($player->slim) && $player->slim !== "") $profile["model_preference"][] = "slim";
             if (isset($player->cape) && $player->cape !== "") $profile["model_preference"][] = "cape";
             return $this->json($profile, null, 1);
@@ -63,7 +63,7 @@ class APIController extends Controller
         return $this->json();
     }
 
-    public function legacy($username, $type = "skin") {
+    public function legacy($username, $type = "default") {
         $player = $this->getPlayerModel()->getPlayerByName($username);
         if (isset($player->$type) && file_exists(TextureDir . $player->$type . ".png")) {
             return file_get_contents(TextureDir . $player->$type . ".png");
@@ -73,7 +73,7 @@ class APIController extends Controller
     }
 
     public function legacySkin($req) {
-        $data = $this->legacy($req->data->route->username, "skin");
+        $data = $this->legacy($req->data->route->username, "default");
         if ($data) {
             return $this->response($data, ["Content-Type" => "image/png"]);
         } else {

@@ -87,36 +87,6 @@ $$('span#add-player').on('click', function (e) {
     );
 });
 
-$$('span#remove-player').on('click', function (e) {
-    //console.log(e._detail);
-    //console.log(e.srcElement.getAttribute("data-player"));
-    mdui.confirm('您确定要删除角色 "' + e.srcElement.getAttribute("data-player") + '" 吗？这个角色将永远失去！（很长时间！）', "删除角色？", function(){
-        $$.ajax({
-            method: 'POST',
-            url: '',
-            dataType: "json",
-            data: "removePlayer=" + e.srcElement.getAttribute("data-player"),
-            success: function (data) {
-                //console.log(data);
-                if (data.status !== "succeed") {
-                    mdui.snackbar({
-                        message: '删除失败，' + data.result.msg,
-                        position: 'right-bottom'
-                    });
-                } else if (data.status === "succeed") {
-                    mdui.snackbar({
-                        message: '删除成功',
-                        position: 'right-bottom'
-                    });
-                    $$('span#remove-player[data-player="'+e.srcElement.getAttribute("data-player")+'"]').addClass("hidden").remove();
-                } else {
-                    mdui.alert("未知错误");
-                }
-            }
-        });
-    });
-});
-
 $$("span#view-skin").on('click', function (e) {
     MSP.changeSkin("/legacy/skin/" + e.srcElement.getAttribute("data-player") + ".png?default");
     MSP.changeCape("/legacy/cape/" + e.srcElement.getAttribute("data-player") + ".png");
@@ -150,7 +120,8 @@ $$("#yoshino-skin-preview-del").on('click', function (e) {
                             message: '删除成功',
                             position: 'right-bottom'
                         });
-                        $$('span#edit-skin[data-player="'+e.srcElement.parentNode.getAttribute("data-player")+'"]').addClass("hidden");
+                        $$('span#view-skin[data-player="'+e.srcElement.parentNode.getAttribute("data-player")+'"]').addClass("hidden");
+                        $$('#yoshino-skin-preview-del').prop('disabled', true);
                     } else {
                         mdui.alert("未知错误");
                     }
@@ -159,21 +130,6 @@ $$("#yoshino-skin-preview-del").on('click', function (e) {
         });
     }
 });
-
-document.getElementById('skin').onchange = function (ev) {
-    var fileValue = new Array();
-    var input = $$("#skin").val();
-    if (input.indexOf("/") === -1) {
-        fileValue = input.split("\\");
-    } else {
-        fileValue = input.split("\\");
-    }
-    var fileName = fileValue.slice(-1)[0];
-    //console.log(fileName);
-    //var fileInfo = document.getElementById("skin").files[0];
-    //console.log(fileInfo);
-    $$("#file-name").replaceWith('<span id="file-name">' + fileName + '</span>');
-};
 
 $$(".yoshino-submit").on("click", function (e) {
     var fileInfo = document.getElementById("skin").files;

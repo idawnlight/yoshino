@@ -4,6 +4,8 @@ namespace Controller\User;
 
 use X\Controller;
 
+define("TextureDir", SysDir . "Var/Textures/");
+
 class UserController extends Controller
 {
     public function user($req) {
@@ -65,15 +67,13 @@ class UserController extends Controller
             return $this->json(["retcode" => 400, "msg" => "皮肤必须是 PNG 格式"], "failed", 1);
         }
         if ($this->getPlayerModel()->verifyPlayer($req->data->post->player, $this->getUserModel()->getUserByToken($req->data->cookie->Yoshino_Token)->id)) {
-            $hash = $this->app->boot("\\Yoshino\\Lib\\SkinHashController");
-            $hash = $hash->skinHash($_FILES["skin"]["tmp_name"]);
-            ob_start();
-            $skin = ImageCreateFromPng($_FILES["skin"]["tmp_name"]);
-            imagesavealpha($skin, true);
-            imagepng($skin);
-            $image_data = ob_get_contents();
-            $base64 = base64_encode($image_data);
-            ob_end_clean();
+            $tool = $this->app->boot("\\Yoshino\\Lib\\SkinController");
+            $hash = $tool->skinHash($_FILES["skin"]["tmp_name"]);
+            $content = $tool->skinContent($_FILES["skin"]["tmp_name"]);
+            $base64 = base64_encode($content);
+            $this->getTextureModel()->addTexture($hash, true, $base64);
+            $this->getPlayerModel()->setTexture($req->data->post->player, $req->data->post->type, $hash, $this->getUserModel()->getUserByToken($req->data->cookie->Yoshino_Token)->id);
+            file_put_contents(TextureDir . $hash . ".png", $content);
             return $this->json(["retcode" => 200, "msg" => "上传成功", "hash" => $hash], "succeed", 1);
         } else {
             return $this->json(["retcode" => 400, "msg" => "鉴权失败"], "failed", 1);
@@ -105,5 +105,9 @@ class UserController extends Controller
 
     private function getPlayerModel() {
         return $this->model("User/PlayerModel");
+    }
+
+    private function getTextureModel() {
+        return $this->model("User/TextureModel");
     }
 }

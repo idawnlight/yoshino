@@ -12,7 +12,7 @@ class PlayerModel extends Model
         if (!$this->where("player", $player)->findOne()) {
             $i = $this->create();
             $i->player = $player;
-            $i->id = $id;
+            $i->uid = $id;
             $i->save();
             return true;
         } else {
@@ -30,8 +30,17 @@ class PlayerModel extends Model
         }
     }
 
+    public function setTexture($player, $type = "default", $hash = "") {
+        //print_r($this->where_equal("player", $player)->findOne()->default);exit();
+        $player = $this->where("player", $player)->findOne();
+        $player->{$type} = $hash;
+        $player->last_modified = time();
+        $player->save();
+        return true;
+    }
+
     public function getPlayersById($id) {
-        return $this->where("id", $id)->findMany();
+        return $this->where("uid", $id)->findMany();
     }
 
     public function getPlayerByName($name) {
@@ -39,6 +48,6 @@ class PlayerModel extends Model
     }
 
     public function verifyPlayer($player, $id) {
-        return $this->where("player", $player)->findOne()->id === $id;
+        return $this->where("player", $player)->findOne()->uid === $id;
     }
 }

@@ -20,9 +20,9 @@
   {
     "base" : "/legacy/",
     "rule" : {
-      "GET {username}.png" : "User.APIController:legacySkin",
       "GET skin/{username}.png" : "User.APIController:legacySkin",
-      "GET cape/{username}.png" : "User.APIController:legacyCape"
+      "GET cape/{username}.png" : "User.APIController:legacyCape",
+      "GET {username}.png" : "User.APIController:legacySkin"
     }
   },
   {
