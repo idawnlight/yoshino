@@ -27,6 +27,7 @@ class AuthController extends Controller
             //    hash("sha256", $req->data->post->password . "69249f9626a4ce1488b6a6c8fb7919b5"),
             //    $token);
             $password = $this->getAuthModel()->getPassword($req->data->post->identification);
+            if (!$password) return $this->json(array("retcode" => 400, "msg" => "用户名或密码不正确"), "failed", 1);
             $result = ($password) ? $encrypt->verify($req->data->post->password, $password) : false;
 
             if ($result) {

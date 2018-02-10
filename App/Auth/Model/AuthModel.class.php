@@ -29,7 +29,7 @@ class AuthModel extends Model
 
     public function getPassword($identification) {
         $result = $this->where_raw('(`username` = ? OR `email` = ?)', array($identification, $identification))->findOne();
-        if ($result !== "") {
+        if ($result) {
             return $result->password;
         } else {
             return false;
