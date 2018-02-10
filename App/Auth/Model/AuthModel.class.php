@@ -27,6 +27,15 @@ class AuthModel extends Model
         }
     }
 
+    public function getPassword($identification) {
+        $result = $this->where_raw('(`username` = ? OR `email` = ?)', array($identification, $identification))->findOne();
+        if ($result !== "") {
+            return $result->password;
+        } else {
+            return false;
+        }
+    }
+
     public function setToken($identification, $token) {
         $result = $this->where_raw('(`username` = ? OR `email` = ?)', array($identification, $identification))->findOne();
         $result->token = $token;

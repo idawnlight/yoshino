@@ -37,6 +37,9 @@
 
             if(isset($req->data->cookie->Yoshino_Token)){
                 $token = $req->data->cookie->Yoshino_Token;
+                if (strlen($token) !== 128) {
+                    return false;
+                }
                 if($this->getAuthModel()->isTokenValid($token)){
                     return true;
                 }
