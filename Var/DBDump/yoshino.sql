@@ -11,7 +11,7 @@
  Target Server Version : 50553
  File Encoding         : 65001
 
- Date: 09/02/2018 16:54:29
+ Date: 10/02/2018 19:07:52
 */
 
 SET NAMES utf8mb4;
@@ -22,28 +22,26 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `yoshino_player`;
 CREATE TABLE `yoshino_player`  (
-  `pid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `player` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `id` int(11) DEFAULT NULL,
-  `skin` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `uid` int(11) DEFAULT NULL,
+  `default` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `slim` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `cape` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `last_modified` bigint(20) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`pid`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 0 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for yoshino_texture
 -- ----------------------------
 DROP TABLE IF EXISTS `yoshino_texture`;
 CREATE TABLE `yoshino_texture`  (
-  `tid` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `hash` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `id` int(11) DEFAULT NULL,
-  `pid` int(11) DEFAULT NULL,
   `content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  PRIMARY KEY (`tid`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 0 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for yoshino_user
@@ -56,6 +54,6 @@ CREATE TABLE `yoshino_user`  (
   `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 12344 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
