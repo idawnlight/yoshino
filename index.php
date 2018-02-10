@@ -24,7 +24,7 @@
     /**
      * Composer Vendor Directory
      */
-    defined("COMPOSER_DIR") or define("COMPOSER_DIR", dirname(__DIR__) . '/vendor/');
+    defined("COMPOSER_DIR") or define("COMPOSER_DIR", __DIR__ . '/vendor/');
 
     // Require the composer
     require_once COMPOSER_DIR . 'autoload.php';
