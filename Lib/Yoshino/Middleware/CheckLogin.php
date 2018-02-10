@@ -23,7 +23,11 @@
 
             $isLogin = $controller->checkLogin($request);
             $isInUser = $controller->ifInUser($request);
+            $isAPI = $controller->ifAPI($request);
 
+            if ($isAPI) {
+                return;
+            }
             if (!$isLogin) {
                 $_COOKIE["Yoshino_Token"] = $controller->genToken();
             }

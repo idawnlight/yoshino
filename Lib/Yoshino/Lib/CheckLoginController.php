@@ -54,14 +54,44 @@
          *
          * @param \X\Request $req
          * 
-         * @return string
+         * @return bool
          * 
          */
         public function ifInUser($req){
 
             $uri = $req->uri;
 
-            return (!($uri === "/" || substr($uri, 0, 5) === "/auth") || ($uri === "/auth/logout"));
+            if ($uri === "/auth/logout") {
+                return true;
+            } else if (substr($uri, 0, 5) === "/user") {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
+        /**
+         * If request an API
+         *
+         * @param \X\Request $req
+         *
+         * @return bool
+         *
+         */
+        public function ifAPI($req){
+
+            $uri = $req->uri;
+
+            if (substr($uri, -5) === ".json") {
+                return true;
+            } else if (substr($uri, -4) === ".png") {
+                return true;
+            } else if (substr($uri, 0, 9) === "/textures") {
+                return true;
+            } else {
+                return false;
+            }
 
         }
 
