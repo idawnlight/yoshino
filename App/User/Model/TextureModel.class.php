@@ -14,4 +14,8 @@ class TextureModel extends \X\Model
         $texture->save();
         return true;
     }
+
+    public function getTexture($hash) {
+        return $this->where("hash", $hash)->findOne();
+    }
 }

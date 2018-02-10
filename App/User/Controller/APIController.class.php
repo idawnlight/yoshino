@@ -65,11 +65,19 @@ class APIController extends Controller
 
     public function legacy($username, $type = "default") {
         $player = $this->getPlayerModel()->getPlayerByName($username);
-        if (isset($player->$type) && file_exists(TextureDir . $player->$type . ".png")) {
-            return file_get_contents(TextureDir . $player->$type . ".png");
+        if (!$this->app->config["Yoshino"]["Textures"]["ReadFromDB"]) {
+            if (isset($player->$type) && file_exists(TextureDir . $player->$type . ".png")) {
+                return file_get_contents(TextureDir . $player->$type . ".png");
+            }
         } else {
-            return false;
+            if (isset($player->$type) && $player->$type !== "") {
+                $texture = $this->model("User/TextureModel")->getTexture($player->$type);
+                if (isset($texture->content) && $texture->content !== "") {
+                    return base64_decode($texture->content);
+                }
+            }
         }
+        return false;
     }
 
     public function legacySkin($req) {
@@ -94,13 +102,18 @@ class APIController extends Controller
     }
 
     public function textures($req) {
-        if (file_exists(TextureDir . $req->data->route->hash . ".png")) {
-            $this->returnHeader($req, true, true);
-            return $this->response(file_get_contents(TextureDir . $req->data->route->hash . ".png"), ["Content-Type" => "image/png"]);
+        if (!$this->app->config["Yoshino"]["Textures"]["ReadFromDB"]) {
+            if (file_exists(TextureDir . $req->data->route->hash . ".png")) {
+                $this->returnHeader($req, true, true);
+                return $this->response(file_get_contents(TextureDir . $req->data->route->hash . ".png"), ["Content-Type" => "image/png"]);
+            }
         } else {
-            $this->returnHeader($req, "", false, false);
-            return $this->response("", [], 404);
+            $texture = $this->model("User/TextureModel")->getTexture($req->data->route->hash);
+            if (isset($texture->content) && $texture->content !== "") {
+                return $this->response(base64_decode($texture->content), ["Content-Type" => "image/png"]);
+            }
         }
+        return $this->response("", [], 404);
     }
 
     private function returnHeader($req, $cache = false, $status = true, $modified = null) {
