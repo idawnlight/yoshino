@@ -71,7 +71,7 @@ class UserController extends Controller
             $hash = $tool->skinHash($_FILES["skin"]["tmp_name"]);
             $content = $tool->skinContent($_FILES["skin"]["tmp_name"]);
             $base64 = base64_encode($content);
-            $this->getTextureModel()->addTexture($hash, true, $base64);
+            $this->getTextureModel()->addTexture($hash, $this->app->config["Yoshino"]["SaveTexturesToDB"], $base64);
             $this->getPlayerModel()->setTexture($req->data->post->player, $req->data->post->type, $hash, $this->getUserModel()->getUserByToken($req->data->cookie->Yoshino_Token)->id);
             file_put_contents(TextureDir . $hash . ".png", $content);
             return $this->json(["retcode" => 200, "msg" => "上传成功", "hash" => $hash], "succeed", 1);

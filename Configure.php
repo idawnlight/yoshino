@@ -1,4 +1,9 @@
 <?php
+    $Yoshino = [
+        "SaveTexturesToDB" => true // 将材质以 base64 保存至数据库
+
+    ];
+
     $configure = [
         "SysDir"  => SysDir,
         "Path"    => [
@@ -33,5 +38,7 @@
         "Version" => X,
         "Debug"   => true
     ];
+
+    $configure["Yoshino"] = $Yoshino;
 
     return $configure;
