@@ -29,6 +29,11 @@
         margin-top: 10px;
     }
 }
+@media (min-width: 640px) {
+    .yoshino-skin-upload {
+        min-width: 350px;
+    }
+}
 .yoshino-upload li {
     margin-top: 8px;
     margin-bottom: 8px;

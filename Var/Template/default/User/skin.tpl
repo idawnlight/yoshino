@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="mdui-col-sm-8">
-                <div class="mdui-card">
+                <div class="mdui-card yoshino-skin-upload">
                     <div class="mdui-container">
                         <div class="mdui-card-primary">
                             <div class="mdui-card-primary-title">{{{trans "user.skin/upload-new"}}}</div>
@@ -58,6 +58,7 @@
                                         <span id="file-name">{{{trans "user.skin/upload-file-select"}}}</span>
                                     </label>
                                 </li>
+                                <input name="player" value="" id="player" style="display: none">
                             </form>
                         </ul>
                         <div class="mdui-divider"></div>

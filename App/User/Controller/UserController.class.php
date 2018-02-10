@@ -57,6 +57,30 @@ class UserController extends Controller
         return $this->view("User/skin");
     }
 
+    public function skinUpload($req) {
+        if (!isset($_FILES["skin"])) return $this->json(["retcode" => 400, "msg" => "请选择一个文件"], "failed", 1);
+        if ($_FILES["skin"]["size"] > 10240) {
+            return $this->json(["retcode" => 400, "msg" => "皮肤不能大于 10 KB"], "failed", 1);
+        } else if ($_FILES["skin"]["type"] !== "image/png") {
+            return $this->json(["retcode" => 400, "msg" => "皮肤必须是 PNG 格式"], "failed", 1);
+        }
+        if ($this->getPlayerModel()->verifyPlayer($req->data->post->player, $this->getUserModel()->getUserByToken($req->data->cookie->Yoshino_Token)->id)) {
+            $hash = $this->app->boot("\\Yoshino\\Lib\\SkinHashController");
+            $hash = $hash->skinHash($_FILES["skin"]["tmp_name"]);
+            ob_start();
+            $skin = ImageCreateFromPng($_FILES["skin"]["tmp_name"]);
+            imagesavealpha($skin, true);
+            imagepng($skin);
+            $image_data = ob_get_contents();
+            $base64 = base64_encode($image_data);
+            ob_end_clean();
+            return $this->json(["retcode" => 200, "msg" => "上传成功", "hash" => $hash], "succeed", 1);
+        } else {
+            return $this->json(["retcode" => 400, "msg" => "鉴权失败"], "failed", 1);
+        }
+
+    }
+
     public function managePlayer($req) {
         if (isset($req->data->post->player) && $req->data->post->player !== "") {
             if ($this->getPlayerModel()->addPlayer($req->data->post->player, $this->getUserModel()->getUserByToken($_COOKIE["Yoshino_Token"])->id)) {

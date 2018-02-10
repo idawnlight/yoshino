@@ -37,4 +37,8 @@ class PlayerModel extends Model
     public function getPlayerByName($name) {
         return $this->where("player", $name)->findOne();
     }
+
+    public function verifyPlayer($player, $id) {
+        return $this->where("player", $player)->findOne()->id === $id;
+    }
 }
