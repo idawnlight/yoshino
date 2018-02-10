@@ -128,6 +128,7 @@ class APIController extends Controller
                     exit;
                 }
             }
+            if ($modified !== 0 && $modified !== null) header("Last-Modified: " . gmdate("D, d M Y H:i:s", $modified) . " GMT");
             header("Cache-Control: max-age=600");
             header("Date: " . gmdate("D, d M Y H:i:s", time()) . " GMT");
             header("Expires: " . gmdate("D, d M Y H:i:s", time() + 600) . " GMT");
