@@ -7,6 +7,9 @@
      */
     return function ($App) {
 
+        global $Base;
+        $Base = $App->config["Route"]["Base"];
+
         $App->boot('\X\Middleware\Filter');
 
         $App->container->get("Core.View")->addHelper("file", function ($file){
@@ -48,11 +51,13 @@
                 "user"  => "/user",
                 "user.player" => "/user/player",
                 "user.skin" => "/user/skin",
+                "user.texture" => "/user/texture",
 
                 "github"=> "https://github.com/idawnlight/yoshino"
             ];
 
-            return $router[$name];
+            global $Base;
+            return $Base . $router[$name];
         });
 
         $App->boot("\\Yoshino\\Middleware\\CheckLogin");
