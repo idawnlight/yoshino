@@ -11,12 +11,15 @@ A lite &amp; fast Minecraft skin server, written in php.
   - [x] 登录 / 注册
   - [x] 管理角色
   - [x] 管理皮肤
-  - [ ] 管理披风（第二个版本计划）
+  - [x] 管理披风
+  - [ ] 账号信息（e.g. 密码、邮箱）
+  - [ ] 邮箱验证
 - [ ] 仪表盘
   - [ ] 总览
+  - [ ] 设置
   - [ ] 用户管理
 - [x] API
-  - [x] CustomSkinAPI Revision 2 `/(.*?).json` `/csl/(.*?).json` `/csl/v2/(.*?).json`]`
+  - [x] CustomSkinAPI Revision 2 `/(.*?).json` `/csl/(.*?).json` `/csl/v2/(.*?).json`
   - [x] CustomSkinAPI Revision 1 `/csl/v1/(.*?).json`
   - [x] UniSkinMod 1.4+ `/usm/(.*?).json`
   - [x] Legacy (CustomSkinLoader 13.1- && UniSkinMod 1.2-) `/legacy/skin/(.*?).png` `/legacy/cape/(.*?).png`
