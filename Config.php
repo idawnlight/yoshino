@@ -50,7 +50,6 @@
 
                 "user"  => "/user",
                 "user.player" => "/user/player",
-                "user.skin" => "/user/skin",
                 "user.texture" => "/user/texture",
 
                 "github"=> "https://github.com/idawnlight/yoshino"

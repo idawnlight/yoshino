@@ -22,7 +22,7 @@
     <p>在这里管理您的角色及皮肤</p>
     <div class="mdui-list">
         <a href="{{{path 'user.player'}}}" class="mdui-list-item mdui-ripple">{{{trans "user.manage-player"}}}</a>
-        <a href="{{{path 'user.skin'}}}" class="mdui-list-item mdui-ripple">{{{trans "user.manage-skin"}}}</a>
+        <a href="{{{path 'user.texture'}}}" class="mdui-list-item mdui-ripple">{{{trans "user.manage-texture"}}}</a>
     </div>
 </div>
 {{{include "_partial/footer"}}}
