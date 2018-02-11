@@ -14,7 +14,7 @@
             </div>
             <ul class="mdui-collapse-item-body mdui-list">
                 <a href="{{{path 'user.player'}}}"><li class="mdui-list-item mdui-ripple{{#if player}} mdui-list-item-active{{/if}}">{{{trans "sidebar.user/player"}}}</li></a>
-                <a href="{{{path 'user.skin'}}}"><li class="mdui-list-item mdui-ripple{{#if skin}} mdui-list-item-active{{/if}}">{{{trans "sidebar.user/skin"}}}</li></a>
+                <a href="{{{path 'user.texture'}}}"><li class="mdui-list-item mdui-ripple{{#if skin}} mdui-list-item-active{{/if}}">{{{trans "sidebar.user/texture"}}}</li></a>
             </ul>
         </li>
 

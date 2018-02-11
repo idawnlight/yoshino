@@ -18,5 +18,14 @@
   "skin/upload-model" : "模型：",
   "skin/upload-file"  : "上传：",
   "skin/upload-file-select" : "选择一个新皮肤",
-  "skin/upload-submit" : "提交"
+  "skin/upload-submit" : "提交",
+  "texture/upload-new" : "上传新的材质",
+  "texture/upload-new-tip" : "在右侧选择一个角色",
+  "texture/upload-type" : "类型：",
+  "texture/upload-type-skin" : "皮肤",
+  "texture/upload-type-cape" : "披风",
+  "texture/upload-model" : "模型：",
+  "texture/upload-file"  : "上传：",
+  "texture/upload-file-select" : "选择一个新材质",
+  "texture/upload-submit" : "提交"
 }

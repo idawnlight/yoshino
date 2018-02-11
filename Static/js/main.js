@@ -132,8 +132,8 @@ $$("#yoshino-skin-preview-del").on('click', function (e) {
 });
 
 $$(".yoshino-submit").on("click", function (e) {
-    var fileInfo = document.getElementById("skin").files;
-    var formData = new FormData($$('#skin-upload')[0]);
+    var fileInfo = document.getElementById("texture").files;
+    var formData = new FormData($$('#texture-upload')[0]);
 
     if (fileInfo[0]) {
         fileInfo = fileInfo[0];

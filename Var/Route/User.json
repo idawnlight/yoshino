@@ -12,7 +12,9 @@
       "GET player" : "User.UserController:player",
       "POST player" : "User.UserController:managePlayer",
       "GET skin" : "User.UserController:skin",
-      "POST skin" : "User.UserController:skinUpload"
+      "POST skin" : "User.UserController:skinUpload",
+      "GET texture" : "User.UserController:texture",
+      "POST texture" : "User.UserController:textureUpload"
     }
   }
 ]

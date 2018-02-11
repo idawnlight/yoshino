@@ -4,5 +4,6 @@
   "reg" : "注册",
   "user" : "用户中心",
   "player" : "角色",
-  "skin" : "皮肤"
+  "skin" : "皮肤",
+  "texture" : "材质"
 }

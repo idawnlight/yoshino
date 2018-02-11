@@ -2,5 +2,6 @@
   "index/start" : "开始",
   "user/manage" : "管理",
   "user/player" : "角色",
-  "user/skin"   : "皮肤"
+  "user/skin"   : "皮肤",
+  "user/texture": "材质"
 }
