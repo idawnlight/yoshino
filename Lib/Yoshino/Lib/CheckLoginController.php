@@ -61,9 +61,7 @@
 
             $uri = $req->uri;
 
-            if ($uri === "/auth/logout") {
-                return true;
-            } else if (substr($uri, 0, 5) === "/user") {
+            if ($uri === "/auth/logout" || substr($uri, 0, 5) === "/user" || substr($uri, 0, 10) === "/dashboard") {
                 return true;
             } else {
                 return false;
@@ -83,11 +81,7 @@
 
             $uri = $req->uri;
 
-            if (substr($uri, -5) === ".json") {
-                return true;
-            } else if (substr($uri, -4) === ".png") {
-                return true;
-            } else if (substr($uri, 0, 9) === "/textures") {
+            if (substr($uri, -5) === ".json" || substr($uri, -4) === ".png" || substr($uri, 0, 9) === "/textures") {
                 return true;
             } else {
                 return false;
