@@ -1,0 +1,14 @@
+[   
+    {
+        "base" : "system:",
+        "rule" : {
+            "CLI serve" : "System.CommandLineController:serve"
+        }
+    },
+    {
+        "base" : "database:",
+        "rule" : {
+            "CLI install" : "System.CommandLineController:install"
+        }
+    }
+]

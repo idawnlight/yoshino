@@ -1,0 +1,11 @@
++---------------------------------------------------+
+| ============== YOUSHINO INSTALLER =============== |
++---------------------------------------------------+
+| Author : Dawn <i@dawnlab.me>                      |
+| License: GPL-V3                                   |
+| GitHub : https://github.com/idawnlight/yoshino    |
++---------------------------------------------------+
+Welcome to Yoshino Installer! 
+This will install yoshino on your server.
+Just in a few minutes, you can start using.
+=====================================================
