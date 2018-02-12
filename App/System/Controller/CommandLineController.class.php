@@ -61,17 +61,21 @@
                     $cli->clear();
                     $cli->draw("install_during");
                     $progress = $cli->progress()->total(3);
+                    sleep(1);
                     if(!is_file($path))
                         file_put_contents($path, "");
                     $sql = file_get_contents(SysDir . "Var/DBDump/sqlite.sql");
                     $progress->advance(1);
+                    sleep(1);
                     $pdo = new \PDO($dsn);
                     $pdo->exec($sql);
                     $progress->advance(1);
+                    sleep(1);
                     //////////////////////////////////////
                     // Place to add write configure.php //
                     //////////////////////////////////////
                     $progress->advance(1);
+                    sleep(2);
                     $cli->clear();
                     $cli->draw("install_success");
                     break;
