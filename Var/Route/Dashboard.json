@@ -1,0 +1,14 @@
+[
+  {
+    "base" : "/dashboard",
+    "rule" : {
+      "GET " : "Dashboard.DashboardController:index"
+    }
+  },
+  {
+    "base" : "/dashboard/",
+    "rule" : {
+      "GET user" : "Home.IndexController:user"
+    }
+  }
+]

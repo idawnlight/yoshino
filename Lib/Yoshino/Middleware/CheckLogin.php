@@ -30,6 +30,20 @@
             }
             if (!$isLogin) {
                 $_COOKIE["Yoshino_Token"] = $controller->genToken();
+            } else {
+                $permission = $controller->getUserPermission($request);
+                if ($permission === "banned") {
+                    $this->app->handler->response($controller->getBannedResponse());
+                    die();
+                }
+                if (substr($request->uri, 0, 10) === "/dashboard") {
+                    if ($permission === "admin") {
+                        return;
+                    } else {
+                        $this->app->handler->response($controller->getRedirectResponse("/user"));
+                        die;
+                    }
+                }
             }
             if($isLogin && $isInUser){
                 return;
@@ -46,8 +60,6 @@
         }
 
         public function response($event, \X\Response $response){
-
-
 
         }
 

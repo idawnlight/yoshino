@@ -62,4 +62,8 @@ class AuthModel extends Model
         return ($token === "") ? false : $this->where("token", $token)->findOne();
     }
 
+    public function getUserPermission($token = "") {
+        return ($token === "") ? false : $this->where("token", $token)->findOne()->permission;
+    }
+
 }

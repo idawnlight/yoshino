@@ -90,6 +90,24 @@
         }
 
         /**
+         * Get User Permission
+         *
+         * @prama string $token
+         *
+         * @return string $permission
+         *
+         */
+        public function getUserPermission($req) {
+            $token = $req->data->cookie->Yoshino_Token;
+            $permission = $this->getAuthModel()->getUserPermission($token);
+            if($permission !== ""){
+                return $permission;
+            } else {
+                return false;
+            }
+        }
+
+        /**
          * Get Redirect Response
          *
          * @param string $uri
@@ -100,6 +118,15 @@
         public function getRedirectResponse(string $uri){
 
             return $this->response("Redirecting...", ["location" => $uri], 302);
+
+        }
+
+        /**
+         * Get Banned Response
+         */
+        public function getBannedResponse(){
+
+            return $this->response("此账号已被封禁，详情请询问管理员。", [], 403);
 
         }
 
