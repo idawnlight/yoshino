@@ -1,5 +1,6 @@
 *.log
 .idea/
+.vscode/
 /vendor/
 composer.lock
 composer.lock
