@@ -8,7 +8,8 @@
             "SaveToDB" => true, // 将材质以 base64 保存至数据库（同时保存一份至本地）
             "ReadFromDB" => false // 从数据库中读取材质数据
             // 当有写入权限且数据库较小时，不建议开启 SaveToDB 及 ReadFromDB
-        ]
+        ],
+        "Environment" => "develop"
     ];
 
     $configure = [
@@ -43,6 +44,7 @@
             "Base"     => ""
         ],
         "Version" => X,
+        "Y" => "1.0.0-alpha-1",
         "Debug"   => true
     ];
 

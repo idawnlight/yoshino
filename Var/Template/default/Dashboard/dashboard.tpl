@@ -27,9 +27,9 @@
                     <div class="mdui-card-primary-subtitle">Overview</div>
                 </div>
                 <div class="mdui-card-content">
-                    <div class="mdui-typo-headline">{{{trans 'dashboard.reg-user'}}}<span  class="mdui-float-right">{{{reg-user}}}</span></div>
+                    <div class="mdui-typo-subheading">{{{trans 'dashboard.reg-user'}}}<span  class="mdui-float-right">{{{reg-user}}}</span></div>
                     <div class="mdui-divider"></div>
-                    <div class="mdui-typo-headline">{{{trans 'dashboard.upload-texture'}}}<span  class="mdui-float-right">{{{upload-texture}}}</span></div>
+                    <div class="mdui-typo-subheading">{{{trans 'dashboard.upload-texture'}}}<span  class="mdui-float-right">{{{upload-texture}}}</span></div>
 
                 </div>
             </div>

@@ -43,13 +43,13 @@
     margin: 5px 0 5px 0;
 }
 /* 仪表盘 */
-.mdui-card-content .mdui-typo-headline {
+.mdui-card-content .mdui-typo-subheading {
   margin: 10px 0px 10px 0px;
 }
-.mdui-card-content .mdui-typo-headline:first-child {
+.mdui-card-content .mdui-typo-subheading:first-child {
   margin-top: 0!important;
 }
-.mdui-card-content .mdui-typo-headline:last-child {
+.mdui-card-content .mdui-typo-subheading:last-child {
   margin-bottom: 0!important;
 }
 /* 文档最外层 */

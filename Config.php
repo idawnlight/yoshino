@@ -7,24 +7,23 @@
      */
     return function ($App) {
 
-        global $Base;
+        global $Base, $Environment, $Version;
         $Base = $App->config["Route"]["Base"];
+        $Environment = $App->config["Yoshino"]["Environment"];
+        $Version = $App->config["Y"];
 
         $App->boot('\X\Middleware\Filter');
 
         $App->container->get("Core.View")->addHelper("file", function ($file){
-            return "/Static/".$file;
+            global $Environment, $Version;
+            if ($Environment === "develop") $v="?v=" . date("Y-m-d"); else $v="?v=".$Version;
+            return "/Static/".$file.$v;
         });
 
         $App->container->get("Core.View")->addHelper("trans", function ($name){
             static $language = "zh_CN";
             static $dir = "";
-            static $index;
-            static $page;
-            static $sidebar;
-            static $auth;
-            static $user;
-            static $dashboard;
+            static $index, $page, $sidebar, $auth, $user, $dashboard;
             static $parts = ["page", "index", "sidebar", "auth", "user", "dashboard"];
             static $init = true;
 
