@@ -3,5 +3,7 @@
   "user/manage" : "管理",
   "user/player" : "角色",
   "user/skin"   : "皮肤",
-  "user/texture": "材质"
+  "user/texture": "材质",
+
+  "dashboard/user" : "用户"
 }

@@ -24,7 +24,8 @@
             static $sidebar;
             static $auth;
             static $user;
-            static $parts = ["page", "index", "sidebar", "auth", "user"];
+            static $dashboard;
+            static $parts = ["page", "index", "sidebar", "auth", "user", "dashboard"];
             static $init = true;
 
             if ($init) {
@@ -51,6 +52,9 @@
                 "user"  => "/user",
                 "user.player" => "/user/player",
                 "user.texture" => "/user/texture",
+
+                "dashboard" => "/dashboard",
+                "dashboard.user" => "/dashboard/user",
 
                 "github"=> "https://github.com/idawnlight/yoshino"
             ];

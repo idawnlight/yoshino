@@ -66,4 +66,8 @@ class AuthModel extends Model
         return ($token === "") ? false : $this->where("token", $token)->findOne()->permission;
     }
 
+    public function getUserPermissionByIdentification($identification) {
+        return ($identification === "") ? "banned" : $this->where_raw('(`username` = ? OR `email` = ?)', array($identification, $identification))->findOne()->permission;
+    }
+
 }

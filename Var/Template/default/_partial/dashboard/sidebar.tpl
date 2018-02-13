@@ -1,9 +1,9 @@
 <div class="mdui-drawer" id="yoshino-drawer">
     <ul class="mdui-list" mdui-collapse="{accordion: true}">
-        <a href="{{{path 'user'}}}">
+        <a href="{{{path 'dashboard'}}}">
             <li class="mdui-list-item mdui-ripple{{#if index}} mdui-list-item-active{{/if}}">
                 <i class="mdui-list-item-icon mdui-icon material-icons">layers</i>
-                <div class="mdui-list-item-content">{{{trans "page.user"}}}</div>
+                <div class="mdui-list-item-content">{{{trans "page.dashboard"}}}</div>
             </li>
         </a>
         <li class="mdui-collapse-item{{#if collapse-1}} mdui-collapse-item-open{{/if}}">
@@ -13,18 +13,15 @@
                 <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
             </div>
             <ul class="mdui-collapse-item-body mdui-list">
-                <a href="{{{path 'user.player'}}}"><li class="mdui-list-item mdui-ripple{{#if player}} mdui-list-item-active{{/if}}">{{{trans "sidebar.user/player"}}}</li></a>
-                <a href="{{{path 'user.texture'}}}"><li class="mdui-list-item mdui-ripple{{#if skin}} mdui-list-item-active{{/if}}">{{{trans "sidebar.user/texture"}}}</li></a>
+                <a href="{{{path 'dashboard.user'}}}"><li class="mdui-list-item mdui-ripple{{#if user}} mdui-list-item-active{{/if}}">{{{trans "sidebar.dashboard/user"}}}</li></a>
             </ul>
         </li>
-        {{#if admin}}
-        <a href="{{{path 'dashboard'}}}">
+        <a href="{{{path 'user'}}}">
             <li class="mdui-list-item mdui-ripple">
-                <i class="mdui-list-item-icon mdui-icon material-icons">arrow_forward</i>
-                <div class="mdui-list-item-content">{{{trans "page.dashboard"}}}</div>
+                <i class="mdui-list-item-icon mdui-icon material-icons">arrow_back</i>
+                <div class="mdui-list-item-content">{{{trans "page.user"}}}</div>
             </li>
         </a>
-        {{/if}}
 
         <li class="mdui-divider"></li>
         <a href="{{{path 'github'}}}">

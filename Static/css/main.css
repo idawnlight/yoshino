@@ -42,6 +42,16 @@
 .yoshino-submit {
     margin: 5px 0 5px 0;
 }
+/* 仪表盘 */
+.mdui-card-content .mdui-typo-headline {
+  margin: 10px 0px 10px 0px;
+}
+.mdui-card-content .mdui-typo-headline:first-child {
+  margin-top: 0!important;
+}
+.mdui-card-content .mdui-typo-headline:last-child {
+  margin-bottom: 0!important;
+}
 /* 文档最外层 */
 .doc-container {
   padding-top: 40px;

@@ -14,7 +14,8 @@ class UserController extends Controller
 
         $this->data = [
             "username" => $user->username,
-            "index" => true
+            "index" => true,
+            "admin" => $user->permission === "admin"
         ];
 
         return $this->view("User/index");
@@ -34,7 +35,8 @@ class UserController extends Controller
             "username" => $user->username,
             "players" => $playersList,
             "collapse-1" => true,
-            "player" => true
+            "player" => true,
+            "admin" => $user->permission === "admin"
         ];
 
         return $this->view("User/player");
@@ -54,7 +56,8 @@ class UserController extends Controller
             "username" => $user->username,
             "players" => $playersList,
             "collapse-1" => true,
-            "skin" => true
+            "skin" => true,
+            "admin" => ($user->permission === "admin")
         ];
         return $this->view("User/texture");
     }

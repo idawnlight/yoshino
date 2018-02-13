@@ -15,7 +15,7 @@ A lite &amp; fast Minecraft skin server, written in php.
   - [ ] 账号信息（e.g. 密码、邮箱）
   - [ ] 邮箱验证
 - [ ] 仪表盘
-  - [ ] 总览
+  - [x] 总览
   - [ ] 设置
   - [ ] 用户管理
 - [x] API

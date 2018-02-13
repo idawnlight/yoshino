@@ -19,6 +19,8 @@ class AuthController extends Controller
         if (isset($req->data->post->identification) && isset($req->data->post->password)) {
             if ($req->data->post->identification == "" || $req->data->post->password == "")
                 return $this->json(array("retcode" => 400, "msg" => "所有项目均为必填项"), "failed", 1);
+            if ($this->getAuthModel()->getUserPermissionByIdentification($req->data->post->identification) === "banned")
+                return $this->json(array("retcode" => 403, "msg" => "此账号已被封禁，详情请咨询管理员。"), "failed", 1);
 
             $token = $_COOKIE["Yoshino_Token"];
             $encrypt = $this->app->boot("\\Yoshino\\Lib\\EncryptController");

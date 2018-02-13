@@ -2,7 +2,7 @@
   {
     "base" : "/dashboard",
     "rule" : {
-      "GET " : "Dashboard.DashboardController:index"
+      "GET " : "Dashboard.DashboardController:dashboard"
     }
   },
   {
