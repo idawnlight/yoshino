@@ -44,7 +44,7 @@
             "Base"     => ""
         ],
         "Version" => X,
-        "Y" => "1.0.0-alpha-1",
+        "Y"       => "1.0.0-alpha-1",
         "Debug"   => true
     ];
 

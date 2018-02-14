@@ -26,7 +26,7 @@
         }
 
         /**
-         * Check if the user have logined.
+         * Check if the user have signed in.
          *
          * @param \X\Request $req
          * 
@@ -92,7 +92,7 @@
         /**
          * Get User Permission
          *
-         * @prama string $token
+         * @param \X\Request $req
          *
          * @return string $permission
          *
@@ -115,7 +115,7 @@
          * @return \X\Response
          * 
          */
-        public function getRedirectResponse(string $uri){
+        public function getRedirectResponse($uri){
 
             return $this->response("Redirecting...", ["location" => $uri], 302);
 
