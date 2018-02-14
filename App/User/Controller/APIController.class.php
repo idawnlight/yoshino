@@ -21,6 +21,7 @@ class APIController extends Controller
                 ]
             ];
             if ($v1) {
+                unset($profile);
                 $profile = [
                     "username" => $player->player,
                     "skins" => [
@@ -33,11 +34,12 @@ class APIController extends Controller
             }
             return $this->json($profile, null, 1);
         }
-        return $this->json();
+        return (!$v1) ? $this->response("[]", [], 404) : false;
     }
 
     public function cslv1($req) {
-        return $this->json($this->csl($req, true), null, 1);
+        $profile = $this->csl($req, true);
+        return ($profile) ? $this->json($this->csl($req, true), null, 1) : $this->response("[]", [], 404);
     }
 
     public function usm($req) {
@@ -60,7 +62,7 @@ class APIController extends Controller
             if (isset($player->cape) && $player->cape !== "") $profile["model_preference"][] = "cape";
             return $this->json($profile, null, 1);
         }
-        return $this->json();
+        return $this->response("[]", [], 404);
     }
 
     public function legacy($username, $type = "default") {

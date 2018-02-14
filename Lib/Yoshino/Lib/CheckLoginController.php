@@ -83,6 +83,8 @@
 
             if (substr($uri, -5) === ".json" || substr($uri, -4) === ".png" || substr($uri, 0, 9) === "/textures") {
                 return true;
+            } elseif (strpos($uri, "/textures/")) {
+                return true;
             } else {
                 return false;
             }
