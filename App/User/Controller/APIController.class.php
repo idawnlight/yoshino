@@ -3,8 +3,6 @@ namespace Controller\User;
 
 use X\Controller;
 
-define("TextureDir", SysDir . "Var/Textures/");
-
 class APIController extends Controller
 {
     public function csl($req, $v1 = false) {
@@ -66,10 +64,11 @@ class APIController extends Controller
     }
 
     public function legacy($username, $type = "default") {
+        $textureDir = $this->app->config['SysDir'] . $this->app->config['Path']['Texture'];
         $player = $this->getPlayerModel()->getPlayerByName($username);
         if (!$this->app->config["Yoshino"]["Textures"]["ReadFromDB"]) {
-            if (isset($player->$type) && file_exists(TextureDir . $player->$type . ".png")) {
-                return file_get_contents(TextureDir . $player->$type . ".png");
+            if (isset($player->$type) && file_exists($textureDir . $player->$type . ".png")) {
+                return file_get_contents($textureDir . $player->$type . ".png");
             }
         } else {
             if (isset($player->$type) && $player->$type !== "") {
@@ -104,10 +103,11 @@ class APIController extends Controller
     }
 
     public function textures($req) {
+        $textureDir = $this->app->config['SysDir'] . $this->app->config['Path']['Texture'];
         if (!$this->app->config["Yoshino"]["Textures"]["ReadFromDB"]) {
-            if (file_exists(TextureDir . $req->data->route->hash . ".png")) {
+            if (file_exists($textureDir . $req->data->route->hash . ".png")) {
                 $this->returnHeader($req, true, true);
-                return $this->response(file_get_contents(TextureDir . $req->data->route->hash . ".png"), ["Content-Type" => "image/png"]);
+                return $this->response(file_get_contents($textureDir . $req->data->route->hash . ".png"), ["Content-Type" => "image/png"]);
             }
         } else {
             $texture = $this->model("User/TextureModel")->getTexture($req->data->route->hash);

@@ -4,8 +4,6 @@ namespace Controller\User;
 
 use X\Controller;
 
-define("TextureDir", SysDir . "Var/Textures/");
-
 class UserController extends Controller
 {
     public function user($req) {
@@ -63,6 +61,7 @@ class UserController extends Controller
     }
 
     public function textureUpload($req) {
+        $textureDir = $this->app->config['SysDir'] . $this->app->config['Path']['Texture'];
         if (!isset($_FILES["texture"])) return $this->json(["retcode" => 400, "msg" => "请选择一个文件"], "failed", 1);
         if ($_FILES["texture"]["size"] > 10240) {
             return $this->json(["retcode" => 400, "msg" => "材质不能大于 10 KB"], "failed", 1);
@@ -77,7 +76,7 @@ class UserController extends Controller
             $this->getTextureModel()->addTexture($hash, $this->app->config["Yoshino"]["Textures"]["SaveToDB"], $base64);
             if ($req->data->post->type === "skin") $this->getPlayerModel()->setTexture($req->data->post->player, $req->data->post->model, $hash, $this->getUserModel()->getUserByToken($req->data->cookie->Yoshino_Token)->id);
             if ($req->data->post->type === "cape") $this->getPlayerModel()->setTexture($req->data->post->player, $req->data->post->type, $hash, $this->getUserModel()->getUserByToken($req->data->cookie->Yoshino_Token)->id);
-            file_put_contents(TextureDir . $hash . ".png", $content);
+            file_put_contents($textureDir . $hash . ".png", $content);
             return $this->json(["retcode" => 200, "msg" => "上传成功", "hash" => $hash], "succeed", 1);
         } else {
             return $this->json(["retcode" => 400, "msg" => "非法请求"], "failed", 1);

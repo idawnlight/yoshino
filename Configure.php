@@ -22,7 +22,8 @@
             "Log"         => [
                 "Info"      => "Var/Log/info.log",
                 "Error"     => "Var/Log/error.log"
-            ]
+            ],
+            "Texture"     => "Var/Textures/"
         ], 
         "View"    => [
             "Start"    => "{{",
