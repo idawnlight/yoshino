@@ -15,9 +15,9 @@
         $App->boot('\X\Middleware\Filter');
 
         $App->container->get("Core.View")->addHelper("file", function ($file){
-            global $Environment, $Version;
+            global $Environment, $Version, $Base;
             if ($Environment === "develop") $v="?v=" . date("Y-m-d"); else $v="?v=".$Version;
-            return "/Static/".$file.$v;
+            return $Base."/Static/".$file.$v;
         });
 
         $App->container->get("Core.View")->addHelper("trans", function ($name){
